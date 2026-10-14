@@ -1,67 +1,71 @@
 @import "tailwindcss";
 
 /* ─── DISHA 3.0 Design System ─── */
-/* Soft Pastel Claymorphism — Lavender · Cream · Powder Blue */
+/* Soft Pastel Claymorphism + Glassmorphism — Lavender · Cream · Powder Blue */
 
 @theme {
   /* ── Color Tokens ── */
-  --color-background: #faf8f5;
+  --color-background: #ece7f7;
   --color-foreground: #1e1b4b;
 
-  --color-primary: #8b7dd8;
+  --color-primary: #7c6fd0;
   --color-primary-light: #a89de3;
-  --color-primary-dark: #6d5fc8;
+  --color-primary-dark: #5d50b8;
   --color-primary-foreground: #ffffff;
 
-  --color-secondary: #a8c4e0;
-  --color-secondary-light: #c5d9ee;
-  --color-secondary-dark: #7fadd1;
+  --color-secondary: #8ab4d8;
+  --color-secondary-light: #b8d3ea;
+  --color-secondary-dark: #5d8fb5;
   --color-secondary-foreground: #1e1b4b;
 
-  --color-muted: #f0ecf9;
-  --color-muted-foreground: #6b7280;
+  --color-muted: #e4dff5;
+  --color-muted-foreground: #5a5880;
 
-  --color-accent: #b8a9e8;
-  --color-accent-peach: #f5d0c0;
+  --color-accent: #b09ee0;
+  --color-accent-peach: #f0c8b2;
   --color-accent-foreground: #1e1b4b;
 
-  --color-card: #ffffff;
+  --color-card: rgba(255, 255, 255, 0.82);
   --color-card-foreground: #1e1b4b;
 
-  --color-surface: #f7f4ff;
-  --color-surface-2: #eef3ff;
+  --color-surface: rgba(240, 236, 255, 0.75);
+  --color-surface-2: rgba(228, 238, 255, 0.75);
 
-  --color-border: #d8d0f0;
-  --color-input: #ece8f8;
-  --color-ring: #8b7dd8;
+  --color-border: rgba(180, 168, 224, 0.55);
+  --color-input: #e8e2f8;
+  --color-ring: #7c6fd0;
 
-  --color-cream: #faf5ee;
-  --color-cream-dark: #f0e8d8;
-  --color-lavender: #e8e2f8;
-  --color-powder-blue: #dce8f5;
+  --color-cream: #fdf8f0;
+  --color-cream-dark: #f2e9d8;
+  --color-lavender: rgba(220, 212, 248, 0.85);
+  --color-powder-blue: rgba(208, 228, 248, 0.85);
 
   /* ── Typography ── */
   --font-sans: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
   --font-display: "Outfit", "Plus Jakarta Sans", system-ui, sans-serif;
 
-  /* ── Spacing / Layout ── */
+  /* ── Border radii ── */
   --radius-clay: 1.5rem;
   --radius-clay-lg: 2rem;
   --radius-clay-sm: 1rem;
 
-  /* ── Shadows (Claymorphism) ── */
-  --shadow-clay-sm: 0 2px 8px 0 rgba(139, 125, 216, 0.12),
-    0 1px 3px 0 rgba(139, 125, 216, 0.08);
-  --shadow-clay: 0 8px 24px 0 rgba(139, 125, 216, 0.15),
-    0 2px 8px 0 rgba(139, 125, 216, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  --shadow-clay-lg: 0 16px 48px 0 rgba(139, 125, 216, 0.18),
-    0 4px 16px 0 rgba(139, 125, 216, 0.12),
+  /* ── Claymorphism shadows ── */
+  --shadow-clay-sm: 0 2px 8px rgba(124, 111, 208, 0.14),
+    0 1px 3px rgba(124, 111, 208, 0.1);
+  --shadow-clay: 0 8px 28px rgba(124, 111, 208, 0.18),
+    0 2px 8px rgba(124, 111, 208, 0.12),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.85);
+  --shadow-clay-lg: 0 18px 50px rgba(124, 111, 208, 0.22),
+    0 4px 16px rgba(124, 111, 208, 0.14),
     inset 0 2px 0 rgba(255, 255, 255, 0.9);
-  --shadow-clay-raised: 0 20px 60px 0 rgba(139, 125, 216, 0.22),
-    0 6px 20px 0 rgba(139, 125, 216, 0.14),
-    inset 0 2px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -2px 0 rgba(139, 125, 216, 0.08);
+  --shadow-clay-raised: 0 24px 64px rgba(124, 111, 208, 0.26),
+    0 6px 20px rgba(124, 111, 208, 0.16),
+    inset 0 2px 0 rgba(255, 255, 255, 0.96),
+    inset 0 -2px 0 rgba(124, 111, 208, 0.1);
+
+  /* Glass shadow */
+  --shadow-glass: 0 8px 32px rgba(124, 111, 208, 0.2),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.7);
 
   /* ── Breakpoints ── */
   --breakpoint-xs: 375px;
@@ -82,7 +86,13 @@
   }
 
   body {
-    background-color: var(--color-background);
+    /* Global clay backdrop — fixed, always behind everything */
+    background-color: #d8d0f0;
+    background-image: url("/backdrop-image.png");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center top;
+    background-repeat: no-repeat;
     color: var(--color-foreground);
     font-family: var(--font-sans);
     line-height: 1.6;
@@ -91,34 +101,19 @@
     overflow-x: hidden;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     font-weight: 700;
     line-height: 1.15;
     letter-spacing: -0.02em;
   }
 
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
+  a { color: inherit; text-decoration: none; }
 
-  img,
-  video {
-    max-width: 100%;
-    height: auto;
-  }
+  img, video { max-width: 100%; height: auto; }
 
-  /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
+    *, *::before, *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
@@ -129,7 +124,8 @@
 
 /* ─── Utility Classes ─── */
 @layer utilities {
-  /* Container */
+
+  /* ── Layout ── */
   .container-site {
     width: 100%;
     max-width: 1200px;
@@ -137,29 +133,123 @@
     padding-inline: clamp(1rem, 5vw, 2.5rem);
   }
 
-  /* Claymorphism card surface */
+  /* ─────────────────────────────────────────────
+     CLAY CARDS — rich depth, warm highlight top
+  ───────────────────────────────────────────── */
   .clay-card {
-    background: var(--color-card);
+    background: rgba(255, 255, 255, 0.88);
     border-radius: var(--radius-clay);
     box-shadow: var(--shadow-clay);
-    border: 1px solid var(--color-border);
+    border: 1.5px solid rgba(255, 255, 255, 0.92);
   }
 
   .clay-card-raised {
-    background: var(--color-card);
+    background: rgba(255, 255, 255, 0.92);
     border-radius: var(--radius-clay-lg);
     box-shadow: var(--shadow-clay-raised);
-    border: 1px solid rgba(255, 255, 255, 0.9);
+    border: 1.5px solid rgba(255, 255, 255, 0.96);
   }
 
   .clay-surface {
-    background: var(--color-surface);
+    background: rgba(235, 230, 255, 0.7);
     border-radius: var(--radius-clay);
     box-shadow: var(--shadow-clay-sm);
-    border: 1px solid var(--color-border);
+    border: 1px solid rgba(200, 192, 240, 0.5);
   }
 
-  /* Section spacing */
+  /* ─────────────────────────────────────────────
+     GLASS CARDS — frosted, semi-transparent
+  ───────────────────────────────────────────── */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.52);
+    border-radius: var(--radius-clay);
+    box-shadow: var(--shadow-glass);
+    border: 1.5px solid rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(18px) saturate(1.4);
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  }
+
+  .glass-card-strong {
+    background: rgba(255, 255, 255, 0.68);
+    border-radius: var(--radius-clay);
+    box-shadow: var(--shadow-clay-raised);
+    border: 1.5px solid rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(28px) saturate(1.6);
+    -webkit-backdrop-filter: blur(28px) saturate(1.6);
+  }
+
+  /* Glass navbar */
+  .glass-navbar {
+    background: rgba(255, 255, 255, 0.72);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(24px) saturate(1.8);
+    -webkit-backdrop-filter: blur(24px) saturate(1.8);
+    box-shadow: 0 2px 20px rgba(124, 111, 208, 0.1);
+  }
+
+  /* ─────────────────────────────────────────────
+     SECTION PANELS — rich clay slabs over backdrop
+     Each feels like a sculpted clay tile —
+     warm white base, colored tint, real depth.
+  ───────────────────────────────────────────── */
+
+  /* Default: lavender clay — primary accent feel */
+  .section-clay {
+    background: linear-gradient(
+      175deg,
+      rgba(252, 250, 255, 0.98) 0%,
+      rgba(240, 234, 255, 0.97) 55%,
+      rgba(228, 220, 252, 0.95) 100%
+    );
+    box-shadow:
+      0 -2px 0 rgba(255, 255, 255, 0.95),
+      0 2px 0 rgba(124, 111, 208, 0.06),
+      0 12px 48px rgba(124, 111, 208, 0.14),
+      inset 0 1px 0 rgba(255,255,255,0.9);
+  }
+
+  /* Alt: powder-blue clay */
+  .section-clay-alt {
+    background: linear-gradient(
+      175deg,
+      rgba(248, 252, 255, 0.98) 0%,
+      rgba(228, 242, 255, 0.97) 55%,
+      rgba(208, 230, 252, 0.95) 100%
+    );
+    box-shadow:
+      0 -2px 0 rgba(255, 255, 255, 0.95),
+      0 2px 0 rgba(93, 143, 181, 0.06),
+      0 12px 48px rgba(93, 143, 181, 0.12),
+      inset 0 1px 0 rgba(255,255,255,0.9);
+  }
+
+  /* Cream: warm ivory clay */
+  .section-clay-cream {
+    background: linear-gradient(
+      175deg,
+      rgba(255, 254, 250, 0.99) 0%,
+      rgba(255, 250, 240, 0.97) 55%,
+      rgba(248, 240, 224, 0.95) 100%
+    );
+    box-shadow:
+      0 -2px 0 rgba(255, 255, 255, 0.98),
+      0 2px 0 rgba(180, 140, 80, 0.05),
+      0 12px 48px rgba(124, 111, 208, 0.09),
+      inset 0 1px 0 rgba(255,255,255,0.95);
+  }
+
+  /* Keep legacy class names pointing to clay equivalents */
+  .bg-hero-gradient { background: transparent; }
+
+  .bg-section-alt {
+    background: linear-gradient(
+      180deg,
+      rgba(238, 246, 255, 0.97) 0%,
+      rgba(218, 234, 252, 0.95) 100%
+    );
+  }
+
+  /* ── Section spacing ── */
   .section-padding {
     padding-block: clamp(4rem, 10vw, 7rem);
   }
@@ -168,31 +258,15 @@
     padding-block: clamp(3rem, 7vw, 5rem);
   }
 
-  /* Gradient backgrounds */
-  .bg-hero-gradient {
-    background: linear-gradient(
-      135deg,
-      var(--color-cream) 0%,
-      var(--color-lavender) 40%,
-      var(--color-powder-blue) 100%
-    );
-  }
-
-  .bg-section-alt {
-    background: linear-gradient(
-      180deg,
-      var(--color-surface) 0%,
-      var(--color-muted) 100%
-    );
-  }
-
-  /* Text sizes — responsive */
+  /* ─────────────────────────────────────────────
+     TYPOGRAPHY
+  ───────────────────────────────────────────── */
   .text-hero {
-    font-size: clamp(2.5rem, 8vw, 5.5rem);
+    font-size: clamp(2.75rem, 9vw, 6rem);
     font-family: var(--font-display);
     font-weight: 800;
     letter-spacing: -0.03em;
-    line-height: 1.05;
+    line-height: 1.0;
   }
 
   .text-display {
@@ -204,70 +278,88 @@
   }
 
   .text-section-title {
-    font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+    font-size: clamp(1.6rem, 3.5vw, 2.6rem);
     font-family: var(--font-display);
     font-weight: 700;
     letter-spacing: -0.02em;
   }
 
-  /* Tag / badge pill */
+  /* ─────────────────────────────────────────────
+     BADGE PILL — clay style with inset highlight
+  ───────────────────────────────────────────── */
   .badge-pill {
     display: inline-flex;
     align-items: center;
     gap: 0.375rem;
-    padding: 0.3rem 0.875rem;
+    padding: 0.3rem 0.9rem;
     border-radius: 9999px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
+    box-shadow: 0 2px 8px rgba(124,111,208,0.12), inset 0 1px 0 rgba(255,255,255,0.7);
   }
 
-  /* Floating decoration */
+  /* Smaller tag chip — no uppercase */
+  .clay-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(124,111,208,0.18);
+    box-shadow: 0 1px 4px rgba(124,111,208,0.1), inset 0 1px 0 rgba(255,255,255,0.8);
+    color: var(--color-foreground);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* Gradient text utility */
+  .text-gradient {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 60%, var(--color-secondary-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ─────────────────────────────────────────────
+     ANIMATIONS
+  ───────────────────────────────────────────── */
   @keyframes float-gentle {
-    0%,
-    100% {
-      transform: translateY(0px) rotate(0deg);
-    }
-    33% {
-      transform: translateY(-8px) rotate(1deg);
-    }
-    66% {
-      transform: translateY(-4px) rotate(-0.5deg);
-    }
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33%       { transform: translateY(-8px) rotate(1deg); }
+    66%       { transform: translateY(-4px) rotate(-0.5deg); }
   }
 
-  .float-gentle {
-    animation: float-gentle 6s ease-in-out infinite;
+  .float-gentle      { animation: float-gentle 6s ease-in-out infinite; }
+  .float-gentle-slow { animation: float-gentle 9s ease-in-out infinite; }
+  .float-gentle-fast { animation: float-gentle 4s ease-in-out infinite; }
+
+  /* Blobs */
+  .blob { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+
+  /* ─────────────────────────────────────────────
+     SOCIAL ICON HOVER (CSS-only, no JS handler)
+  ───────────────────────────────────────────── */
+  .social-icon-btn:hover {
+    background: var(--color-primary) !important;
+    color: white !important;
+    border-color: var(--color-primary) !important;
   }
 
-  .float-gentle-slow {
-    animation: float-gentle 9s ease-in-out infinite;
-  }
-
-  .float-gentle-fast {
-    animation: float-gentle 4s ease-in-out infinite;
-  }
-
-  /* Decorative blobs */
-  .blob {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  }
-
-  /* Focus ring */
+  /* ── Focus ring ── */
   :focus-visible {
     outline: 2px solid var(--color-ring);
     outline-offset: 2px;
     border-radius: 0.25rem;
   }
 
-  /* Scrollbar */
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: var(--color-muted);
-  }
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb {
     background: var(--color-primary-light);
     border-radius: 999px;
