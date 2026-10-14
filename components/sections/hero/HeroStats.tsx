@@ -1,5 +1,4 @@
-// components/sections/hero/HeroStats.tsx
-// Event stats pills — date, venue, attendees, event type
+
 import { Calendar, MapPin, Users, Mic } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 
@@ -7,13 +6,18 @@ interface StatPillProps {
   icon: React.ReactNode;
   label: string;
   value: string;
-  accent?: string; // CSS color for icon bg
+  accent?: string;
 }
 
-function StatPill({ icon, label, value, accent = "rgba(124,111,208,0.12)" }: StatPillProps) {
+function StatPill({
+  icon,
+  label,
+  value,
+  accent = "rgba(124,111,208,0.12)",
+}: StatPillProps) {
   return (
     <div
-      className="flex items-center gap-2.5 px-3.5 py-2.5"
+      className="flex min-w-0 items-center gap-2 px-2.5 py-2 sm:gap-2.5 sm:px-3.5 sm:py-2.5"
       style={{
         background: "rgba(255,255,255,0.7)",
         border: "1.5px solid rgba(255,255,255,0.88)",
@@ -26,30 +30,38 @@ function StatPill({ icon, label, value, accent = "rgba(124,111,208,0.12)" }: Sta
     >
       {/* Tinted icon bubble */}
       <div
-        className="flex-shrink-0 w-7 h-7 flex items-center justify-center"
+        className="flex h-7 w-7 shrink-0 items-center justify-center sm:h-8 sm:w-8"
         style={{
           background: accent,
           borderRadius: "8px",
         }}
       >
-        <span style={{ color: "var(--color-primary)" }}>{icon}</span>
+        <span className="text-primary">
+          {icon}
+        </span>
       </div>
-      <div className="min-w-0">
+
+      <div className="min-w-0 flex-1">
         <p
-          className="leading-none mb-0.5"
+          className="mb-0.5 truncate leading-none"
           style={{
-            fontSize: "9px",
+            fontSize: "clamp(8px, 2vw, 9px)",
             fontWeight: 700,
-            letterSpacing: "0.08em",
+            letterSpacing: "0.06em",
             textTransform: "uppercase",
             color: "var(--color-muted-foreground)",
           }}
         >
           {label}
         </p>
+
         <p
-          className="font-semibold leading-tight truncate"
-          style={{ fontSize: "0.8125rem", color: "var(--color-foreground)" }}
+          className="font-semibold leading-tight"
+          style={{
+            fontSize: "clamp(10px, 2.6vw, 13px)",
+            color: "var(--color-foreground)",
+            overflowWrap: "anywhere",
+          }}
         >
           {value}
         </p>
@@ -61,37 +73,40 @@ function StatPill({ icon, label, value, accent = "rgba(124,111,208,0.12)" }: Sta
 export function HeroStats() {
   return (
     <div
-      className="flex flex-wrap gap-2"
+      className="grid w-full grid-cols-1 gap-2 sm:gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
       role="list"
       aria-label="Event details"
     >
-      <div role="listitem">
+      <div role="listitem" className="min-w-0">
         <StatPill
-          icon={<Calendar className="w-3.5 h-3.5" />}
+          icon={<Calendar className="h-3.5 w-3.5" />}
           label="Date"
           value={siteConfig.eventDate}
           accent="rgba(124,111,208,0.14)"
         />
       </div>
-      <div role="listitem">
+
+      <div role="listitem" className="min-w-0">
         <StatPill
-          icon={<MapPin className="w-3.5 h-3.5" />}
-          label="Venue"
-          value={siteConfig.venueShort}
-          accent="rgba(93,143,181,0.14)"
-        />
-      </div>
-      <div role="listitem">
-        <StatPill
-          icon={<Users className="w-3.5 h-3.5" />}
+          icon={<Users className="h-3.5 w-3.5" />}
           label="Attendees"
           value={`${siteConfig.expectedAttendees} Expected`}
           accent="rgba(176,158,224,0.18)"
         />
       </div>
-      <div role="listitem">
+
+      <div role="listitem" className="min-w-0">
         <StatPill
-          icon={<Mic className="w-3.5 h-3.5" />}
+          icon={<MapPin className="h-3.5 w-3.5" />}
+          label="Venue"
+          value={siteConfig.venueShort}
+          accent="rgba(93,143,181,0.14)"
+        />
+      </div>
+
+      <div role="listitem" className="min-w-0">
+        <StatPill
+          icon={<Mic className="h-3.5 w-3.5" />}
           label="Format"
           value="Panel · Speakers · Activities"
           accent="rgba(124,111,208,0.1)"

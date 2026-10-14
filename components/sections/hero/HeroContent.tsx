@@ -72,21 +72,42 @@ export function HeroContent() {
       </motion.p>
 
       {/* CTA buttons */}
-      <motion.div
-        className="flex flex-wrap gap-3"
-        initial={{ opacity: 0, y: 14 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.42, ease: "easeOut" }}
-      >
-        <Button href={siteConfig.registrationUrl} variant="primary" size="lg">
-          Join Event
-          <ArrowRight className="w-4 h-4" />
-        </Button>
-        <Button href="#about" variant="outline" size="lg">
-          Explore
-          <ChevronDown className="w-4 h-4" />
-        </Button>
-      </motion.div>
+      <div>
+        <div className="hidden md:block">
+          <motion.div
+            className="flex flex-wrap gap-3"
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.42, ease: "easeOut" }}
+          >
+            <Button href={siteConfig.registrationUrl} variant="primary" size="lg">
+              Join Event
+              <ArrowRight className="w-4 h-4" />
+            </Button>
+            <Button href="#about" variant="outline" size="lg">
+              Explore
+              <ChevronDown className="w-4 h-4" />
+            </Button>
+          </motion.div>
+        </div>
+        <div className="md:hidden">
+          <motion.div
+            className="flex flex-wrap gap-3"
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.42, ease: "easeOut" }}
+          >
+            <Button href={siteConfig.registrationUrl} variant="primary" size="md">
+              Join Event
+              <ArrowRight className="w-4 h-4" />
+            </Button>
+            <Button href="#about" variant="outline" size="md">
+              Explore
+              <ChevronDown className="w-4 h-4" />
+            </Button>
+          </motion.div>
+        </div>
+      </div>
 
       {/* Stats row */}
       <motion.div
@@ -96,6 +117,6 @@ export function HeroContent() {
       >
         <HeroStats />
       </motion.div>
-    </div>
+    </div >
   );
 }

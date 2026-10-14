@@ -25,7 +25,7 @@ export const siteConfig = {
   eventDate: "27 October 2026",
   eventDateISO: "2026-10-27",
   venue: "GCET, Campus One, Knowledge Park II, Greater Noida, Uttar Pradesh, India",
-  venueShort: "GCET Campus One, Greater Noida",
+  venueShort: "GCET Campus One",
   expectedAttendees: "100+",
 
   // Registration — update when confirmed
